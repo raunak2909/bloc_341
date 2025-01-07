@@ -1,11 +1,13 @@
 import 'package:bloc_341/bloc/counter_bloc.dart';
 import 'package:bloc_341/bloc/counter_event.dart';
+import 'package:bloc_341/list_bloc/list_bloc.dart';
+import 'package:bloc_341/list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(BlocProvider(
-    create: (context) => CounterBloc(),
+    create: (context) => ListBloc(),
     child: const MyApp(),
   ));
 }
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MyHomePage());
+        home: ListPage());
   }
 }
 
@@ -116,7 +118,7 @@ class SecondPage extends StatelessWidget {
                     icon: Icon(Icons.remove)),
                 IconButton(
                     onPressed: () {
-                      context.read<CounterBloc>().add(IncrementCountEvent());
+                      context.read<CounterBloc>().add(IncrementCountEvent(count: 4));
                     },
                     icon: Icon(Icons.add))
               ],

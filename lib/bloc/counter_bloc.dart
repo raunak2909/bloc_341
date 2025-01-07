@@ -6,7 +6,7 @@ class CounterBloc extends Bloc<CounterEvent, int>{
   CounterBloc() : super(0){
 
     on<IncrementCountEvent>((event, emit){
-      emit(state+1);
+      emit(state+event.count);
     });
 
     on<DecrementCountEvent>((event, emit){
